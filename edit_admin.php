@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Блог</title>
-        <link rel="stylesheet" href="../style.css">
-        <!-- Latest compiled and minified CSS -->
+               <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     </head>
     <body>
@@ -27,7 +26,7 @@
                 <br>
                 <label>
                     Year
-                    <input type="date" name="date" value="<?=$article['year']?>" class="form-item" required>
+                    <input type="date" name="year" value="<?=$article['year']?>" class="form-item" required>
                 </label>
                 <br>
                 <label>
