@@ -2,9 +2,12 @@
 
 Будет удалено .idea/workspace.xml
 Будет удалено login.php
+.idea/*
 
 
 
 Будет удалено query.php
 Будет удалено .idea/dataSources.ids
 Будет удалено .idea/dataSources.local.xml
+Будет удалено models/
+Будет удалено views/
