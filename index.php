@@ -1,33 +1,47 @@
-<?php require_once ("login.php"); ?>
+<?php 
+require_once ("login.php");
+require_once("models/query.php");
 
-<?php
-echo '<h2>Список</h2>';
-echo '<form action="'.$_SERVER['PHP_SELF'].'" method="POST">';
-$result = $mysqli->query("SELECT * FROM books.d_books ORDER BY d_books.id ASC");
-echo '<table border="1">';
-echo '<tr><th>ID</th><th>Название</th><th>Автор</th><th>Год</th><th>Кол-во страниц</th><th>Удл.</th></tr>';
-while ( $item = mysqli_fetch_array( $result ) )
-{
-    echo '<tr>';
-    echo '<td>'.$item['id'].'</td>';
-    echo '<td>'.$item['title'].'</td>';
-    echo '<td>'.$item['author'].'</td>';
-    echo '<td>'.$item['year'].'</td>';
-    echo '<td>'.$item['col_str'].'</td>';
-    echo '<td><input type="checkbox" name="item[]" value="'.$item['id'].'" /></td>';
-    echo '</tr>';
-}
-echo '</table>';
-echo '<input type="submit" name="submitForm" value="Удалить отмеченные" />';
-echo '</form>';
+$link = db_connect();
 
-if ( isset ( $_POST['item'] ) )
-{
-    $ids = implode( ',', $_POST['item'] );
-    $mysqli->query("DELETE FROM `d_books` WHERE `id` IN ('.$ids.')");
-    header( 'Location: '.$_SERVER['PHP_SELF'] );
-}
+$article['id']='';
+$article['title']='';
+$article['year']='';
+$article['author']='';
+$article['col_str']='';
+   
+if(isset($_GET['action']))
+    $action = $_GET['action'];
+else
+    $action = "";
 
+    if($action == "add"){
+        if(!empty($_POST)){
+            articles_new($link, $_POST['id'], $_POST['title'], $_POST['year'], $_POST['author'], $_POST['col_str']);
+            header("Location: index.php");
+        }
+        include("edit_admin.php");
+    }else if($action == 'edit'){
+        if(!isset($_GET['id']))
+            header('Location: index.php');
+        $id = (int)$_GET['id'];
+
+        if(!empty($_POST) && $id > 0) {
+            articles_edit($link, $id, $_POST['title'], $_POST['year'], $_POST['author'], $_POST['col_str']);
+            header("Location: index.php");
+        }
+
+        $article = article_get($link, $id);
+        include("article_admin.php");
+    }else if($action == 'delete'){
+        $id = $_GET['id'];
+        $article = articles_delete($link, $id);
+        header('Location: index.php');
+    }
+    else{
+        $articles = articles_all($link);
+        include("admin.php");
+    }
 ?>
 
 
