@@ -13,7 +13,7 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a id="blog" class="navbar-brand" href="../index.php">Блог</a>
+                    <h3>Books</h3>
                 </div>
             </div>
         </nav>
@@ -32,7 +32,12 @@
                 <br>
                 <label>
                     Author
-                    <textarea class="form-item" name="content" required><?=$article['content']?></textarea>
+                    <input type="text" name="author" value="<?=$article['author']?>" class="form-item" required>
+                </label>
+                <br>
+                <label>
+                    Col_str
+                    <input type="text" name="col_str" value="<?=$article['col_str']?>" class="form-item" required>
                 </label>
                 <br>
                 <input type="submit" value="Сохранить" class="btn">

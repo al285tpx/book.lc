@@ -15,7 +15,7 @@
                     <h3>Books</h3>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.php?action=add">Создать статью</a></li>
+                    <li><a href="index.php?action=add">Создать запись</a></li>
                 </ul>
             </div>
         </nav>
