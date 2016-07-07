@@ -2,7 +2,9 @@
 
 
 .idea/*
-models/query.php
+
 Будет удалено .idea/
-Будет удалено models/
+
 Будет удалено views/
+Будет удалено login.php
+Будет удалено models/
