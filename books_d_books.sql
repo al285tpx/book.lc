@@ -1,0 +1,2 @@
+INSERT INTO books.d_books (title, year, author, col_str) VALUES ('Sapiens: A Brief History of Humankind', 2016, 'Yuval Noah Harari ', 300);
+INSERT INTO books.d_books (title, year, author, col_str) VALUES ('A Manual for Living (A Little Book of Wisdom)', 2004, 'Epictetus', 400);
