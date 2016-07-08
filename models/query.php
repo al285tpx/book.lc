@@ -39,8 +39,6 @@ function articles_new($link, $title, $year, $author, $col_str){
     $title = trim($title);
     $author = trim($author);
 
-
-
     // Если title пустой выводим false
     if ($title == '')
         return false;

@@ -1,8 +1,10 @@
-<?php 
+<?php
+//ini_set('display_errors', 1);
 require_once ("login.php");
 require_once("models/query.php");
 
-$link = db_connect();
+
+
 
 //$article['id']='';
 //$article['title']='';
@@ -17,7 +19,7 @@ else
 
     if($action == "add"){ //если action = add добавить
         if(!empty($_POST)){
-            articles_new($link, $_POST['id'], $_POST['title'], $_POST['year'], $_POST['author'], $_POST['col_str']);
+            articles_new($link, $_POST['title'], $_POST['year'], $_POST['author'], $_POST['col_str']);
             header("Location: index.php");
         }
         include("edit_admin.php");// подгружам шаблон для добавления записи
