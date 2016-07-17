@@ -1,17 +1,17 @@
 <?php
 //ini_set('display_errors', 1);
 require_once ("login.php");
+require_once ("classes/query.class.php");
 require_once("models/query.php");
 
 
+/**$article['id']='';
+* $article['title']='';
+* $article['year']='';
+* $article['author']='';
+*$article['col_str']='';
+ */
 
-
-//$article['id']='';
-//$article['title']='';
-//$article['year']='';
-//$article['author']='';
-//$article['col_str']='';
-   
 if(isset($_GET['action'])) // если есть входящий параметр
     $action = $_GET['action'];//то он будет равнятся массиву с ключом action
 else
@@ -22,7 +22,8 @@ else
             articles_new($link, $_POST['title'], $_POST['year'], $_POST['author'], $_POST['col_str']);
             header("Location: index.php");
         }
-        include("edit_admin.php");// подгружам шаблон для добавления записи
+
+        include("edit_admin.php");// подгружаем шаблон для добавления записи
 
     }else if($action == 'edit'){
         if(!isset($_GET['id']))
@@ -33,6 +34,7 @@ else
             articles_edit($link, $id, $_POST['title'], $_POST['year'], $_POST['author'], $_POST['col_str']);
             header("Location: index.php");
         }
+
         $article = article_get($link, $id);
         include("edit_admin.php");
 
@@ -41,8 +43,11 @@ else
         $article = articles_delete($link, $id);
         header('Location: index.php');
     }
-    else{
+    else
+        {
         $articles = articles_all($link);
+        //$articles = new query;
+        //$articles->articles_all($link);
         include("admin.php");
     }
 ?>

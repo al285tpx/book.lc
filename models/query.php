@@ -52,8 +52,8 @@ function articles_new($link, $title, $year, $author, $col_str){
         mysqli_real_escape_string($link, $author),
         mysqli_real_escape_string($link, $col_str));
 
-    echo $query;
-    /** @var TYPE_NAME $result */
+    //echo $query;
+    /** @var string $result */
     $result = mysqli_query($link, $query);
 
     if (!$result)
