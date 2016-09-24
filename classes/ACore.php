@@ -10,14 +10,14 @@ abstract class ACore {
     protected $db;
 
     public function __construct() {
-        $this->db = mysql_connect(HOST, USER, PASSWORD);
+        $this->db = mysqli_connect(HOST, USER, PASSWORD, DB);
         if (!$this->db) {
             exit("Error coonect database" . mysql_error());
         }
-        if (!mysql_select_db(DB, $this->db)) {
-            exit("Not name database" . mysql_error());
+        if (!mysqli_select_db($this->db, DB)) {
+            exit("Not name database" . mysqli_error($this->db));
         }
-        mysql_query("SET NAMES 'UTF8'");
+        mysqli_query($this->db, "SET NAMES 'UTF8'");
     }
     protected function get_header() {
         include "header.php";
@@ -46,12 +46,12 @@ abstract class ACore {
         
    protected function get_text_row($id) {
         $query = "SELECT id,title,year,author,col_str FROM d_books WHERE id='$id'";
-        $result = mysql_query($query);
+        $result = mysqli_query($this->db, $query);
         if(!$result) {
-            exit(mysql_error());
+            exit(mysqli_error($this->db));
         }
         $row = array();
-        $row = mysql_fetch_array($result, MYSQL_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 
         return $row;
     } 
