@@ -7,7 +7,7 @@ class delete extends ACore {
            
            $query = "DELETE FROM d_books WHERE id='$id_text'";
            
-           if(mysql_query($query)) {
+           if(mysqli_query($this->db, $query)) {
                $_SESSION['res'] = "Удалено";
                header("Location:?option=");
                exit();
