@@ -17,8 +17,8 @@ class update extends ACore {
         }
         $query = " UPDATE d_books SET title='$title',year='$year',author='$author',col_str='$col_str' WHERE id='$id'";
         
-        if(!mysql_query($query)) {
-            exit(mysql_error());
+        if(!mysqli_query($this->db,$query)) {
+            exit(mysqli_error($this->db));
         }
         else {
           $_SESSION['res'] = "Изменения сохранены";
