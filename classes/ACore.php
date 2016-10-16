@@ -27,7 +27,7 @@ abstract class ACore {
     public function get_body() {
         
         //проверяем сожержит ли POST данные и если да, то вызываем обработчик формы
-        if ($_POST||$_GET['del']) {
+        if ($_POST||$_GET['del']||$_POST['groupdel']) {
             $this->obr();            
        }
 
